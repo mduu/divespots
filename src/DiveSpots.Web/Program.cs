@@ -18,6 +18,10 @@ namespace DiveSpots.Web
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+                .ConfigureWebHostDefaults(webBuilder => { webBuilder
+                    .ConfigureAppConfiguration(config => config.AddEnvironmentVariables())
+                    .CaptureStartupErrors(true)
+                    .UseSetting("detailedErrors", "true")
+                    .UseStartup<Startup>(); });
     }
 }

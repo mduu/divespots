@@ -1,5 +1,6 @@
 ﻿using System;
 using DiveSpots.Application;
+using DiveSpots.Drivers.SQL;
 using DiveSpots.SharedKernel;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -18,8 +19,10 @@ namespace DiveSpots.Web
             if (services == null) throw new ArgumentNullException(nameof(services));
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            SharedKernelRegistrations.RegisterServices(services);
-            ApplicationRegistration.RegisterServices(services);
+            services
+                .AddDiveSpotsSqlDriver()
+                .AddDiveSpotsSharedKernel()
+                .RegisterServices();
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
         }

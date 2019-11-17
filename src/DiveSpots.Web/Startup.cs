@@ -40,7 +40,8 @@ namespace DiveSpots.Web
                 .AddEntityFrameworkStores<SpotsDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            
+            services.AddApplicationInsightsTelemetry();
+
             ApplicationServices.Register(services, Configuration);
         }
 
