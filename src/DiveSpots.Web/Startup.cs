@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using DiveSpots.Drivers.SQL;
+using DiveSpots.Web.Core.TokenHandling;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -13,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DiveSpots.Web
 {
@@ -36,8 +40,25 @@ namespace DiveSpots.Web
                 .AddEntityFrameworkStores<SpotsDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services
+                .AddDefaultIdentity<IdentityUser>(options =>
+                    options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<SpotsDbContext>();
+            
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddJwtBearer("JwtBearer", jwtBearerOptions =>
+                {                        
+                    jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+                    {                            
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[nameof(TokenConfiguration.TokenSecurityKey)])),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime = true, //validate the expiration and not before values in the token
+                        ClockSkew = TimeSpan.FromMinutes(5) //5 minute tolerance for the expiration date
+                    };
+                });
+
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddApplicationInsightsTelemetry();
