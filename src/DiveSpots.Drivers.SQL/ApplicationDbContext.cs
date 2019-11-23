@@ -2,25 +2,27 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using DiveSpots.Domain.Entities;
 using DiveSpots.SharedKernel;
 using JetBrains.Annotations;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DiveSpots.Drivers.SQL
 {
-    public class SpotsDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         private readonly IMediator mediator;
 
-        public SpotsDbContext([NotNull] IMediator mediator)
+        public ApplicationDbContext([NotNull] IMediator mediator)
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
         
-        public SpotsDbContext(
-            DbContextOptions<SpotsDbContext> options,
+        public ApplicationDbContext(
+            DbContextOptions<ApplicationDbContext> options,
             [NotNull] IMediator mediator)
             : base(options)
         {

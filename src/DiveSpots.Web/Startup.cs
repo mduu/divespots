@@ -1,16 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using DiveSpots.Application;
 using DiveSpots.Drivers.SQL;
 using DiveSpots.Web.Core.TokenHandling;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -33,18 +30,15 @@ namespace DiveSpots.Web
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureDatabase(services);
+
+            services.AddMediatR(
+                typeof(ApplicationRegistration).Assembly);
             
             services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddRoleManager<RoleManager<IdentityRole>>()
                 .AddDefaultUI()
-                .AddEntityFrameworkStores<SpotsDbContext>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services
-                .AddDefaultIdentity<IdentityUser>(options =>
-                    options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<SpotsDbContext>();
-            
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddJwtBearer("JwtBearer", jwtBearerOptions =>
                 {                        
@@ -113,7 +107,7 @@ namespace DiveSpots.Web
                 builder.Password = Configuration["DbPassword"];
             }
 
-            services.AddDbContext<SpotsDbContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     builder.ConnectionString,
                     x => x.MigrationsAssembly("DiveSpots.Drivers.SQL")));

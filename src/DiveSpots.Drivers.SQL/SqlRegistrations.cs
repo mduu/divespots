@@ -10,7 +10,7 @@ namespace DiveSpots.Drivers.SQL
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
             
-            services.AddScoped<SpotsDbContext>();
+            services.AddScoped<ApplicationDbContext>();
 
             return services;
         }
