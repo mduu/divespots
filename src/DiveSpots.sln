@@ -12,6 +12,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiveSpots.SharedKernel", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiveSpots.Tests", "DiveSpots.Tests\DiveSpots.Tests.csproj", "{B452EDFE-3294-46AC-876E-90F6F20D3A18}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{48470C2C-000E-41D6-9461-6F737A3F8717}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{4E64D7A4-B76E-4410-8A06-05AB7AE294C5}"
+ProjectSection(SolutionItems) = preProject
+	..\sql\update_to_latest.sql = ..\sql\update_to_latest.sql
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +51,6 @@ Global
 		{B452EDFE-3294-46AC-876E-90F6F20D3A18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{4E64D7A4-B76E-4410-8A06-05AB7AE294C5} = {48470C2C-000E-41D6-9461-6F737A3F8717}
 	EndGlobalSection
 EndGlobal
