@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using DiveSpots.Application;
 using DiveSpots.Drivers.SQL;
 using DiveSpots.SharedKernel;
@@ -7,6 +8,9 @@ using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+[assembly: InternalsVisibleTo("DiveSpots.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")] // For FakeItEasy to use "internal" visibilityusing System;
 
 namespace DiveSpots.Web
 {
