@@ -1,7 +1,18 @@
+using DiveSpots.SharedKernel;
+
 namespace DiveSpots.Domain.Entities
 {
-    public class Diver
+    public class Diver : EntityBase
     {
-        public string ShortName { get; }
+        public Diver(string shortName)
+        {
+            ShortName = shortName;
+        }
+
+        internal Diver()
+        {
+        }
+        
+        public string ShortName { get; internal set; }
     }
 }
