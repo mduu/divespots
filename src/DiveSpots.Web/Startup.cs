@@ -1,7 +1,9 @@
 using System;
 using System.Text;
 using DiveSpots.Application;
+using DiveSpots.Application.Core;
 using DiveSpots.Drivers.SQL;
+using DiveSpots.Web.Core;
 using DiveSpots.Web.Core.TokenHandling;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -52,6 +54,15 @@ namespace DiveSpots.Web
                         ClockSkew = TimeSpan.FromMinutes(5) //5 minute tolerance for the expiration date
                     };
                 });
+            
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(PolicyNames.RequireModerator, policy => policy.RequireRole(Rolenames.Moderator));
+                options.AddPolicy(PolicyNames.RequireAdministrator,
+                    policy => policy.RequireRole(Rolenames.Administrator));
+                options.AddPolicy(PolicyNames.RequireModeratorOrAdmin, policy =>
+                    policy.RequireRole(Rolenames.Administrator, Rolenames.Moderator));
+            });
 
             services.AddControllersWithViews();
             services.AddRazorPages();

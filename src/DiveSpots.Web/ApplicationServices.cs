@@ -2,6 +2,7 @@
 using DiveSpots.Application;
 using DiveSpots.Drivers.SQL;
 using DiveSpots.SharedKernel;
+using DiveSpots.Web.Core.TokenHandling;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,17 @@ namespace DiveSpots.Web
                 .RegisterServices();
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            services.AddSingleton(new TokenConfiguration(GetTokenSecurityKey(configuration)));
+            services.AddTransient<ITokenGenerator, TokenGenerator>();
+        }
+        
+        private static string GetTokenSecurityKey(IConfiguration configuration)
+        {
+            var tokenSecurityKey = configuration[nameof(TokenConfiguration.TokenSecurityKey)];
+
+            return string.IsNullOrWhiteSpace(tokenSecurityKey)
+                ? throw new InvalidOperationException("Not 'TokenSecurityKey' configured!")
+                : tokenSecurityKey;
         }
     }
 }
