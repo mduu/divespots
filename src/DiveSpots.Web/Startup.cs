@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 namespace DiveSpots.Web
 {
@@ -63,6 +64,12 @@ namespace DiveSpots.Web
                 options.AddPolicy(PolicyNames.RequireModeratorOrAdmin, policy =>
                     policy.RequireRole(Rolenames.Administrator, Rolenames.Moderator));
             });
+            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DiveSpots API", Version = "v1" });
+            });
+
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -74,6 +81,13 @@ namespace DiveSpots.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "DiveSpots API V1");
+                c.RoutePrefix = string.Empty;
+            });
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

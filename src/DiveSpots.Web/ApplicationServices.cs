@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using DiveSpots.Application;
+using DiveSpots.Drivers.AppInsights;
 using DiveSpots.Drivers.SQL;
 using DiveSpots.SharedKernel;
 using DiveSpots.Web.Core.TokenHandling;
@@ -27,7 +28,8 @@ namespace DiveSpots.Web
             services
                 .AddDiveSpotsSqlDriver()
                 .AddDiveSpotsSharedKernel()
-                .RegisterServices();
+                .RegisterAppInsightsServices()
+                .RegisterApplicationServices();
 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddSingleton(new TokenConfiguration(GetTokenSecurityKey(configuration)));

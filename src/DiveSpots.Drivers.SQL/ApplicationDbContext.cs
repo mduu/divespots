@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using DiveSpots.Domain.Entities;
+using DiveSpots.Drivers.SQL.Entities.Water;
 using DiveSpots.SharedKernel;
 using JetBrains.Annotations;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,6 +28,8 @@ namespace DiveSpots.Drivers.SQL
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
+        
+        internal virtual ISet<WaterModel>? Waters { get; set; }
 
         public override int SaveChanges()
         {
@@ -45,7 +47,7 @@ namespace DiveSpots.Drivers.SQL
         {
             base.OnModelCreating(builder);
             
-            //builder.ApplyConfiguration(new CommentDataConfiguration());
+            builder.ApplyConfiguration(new WaterConfiguration());
         }
         
         private async Task DispatchDomainEventsForSuccessfullySavedEntities()

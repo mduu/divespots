@@ -24,13 +24,17 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="3.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\DiveSpots.Application\DiveSpots.Application.csproj" />
+      <ProjectReference Include="..\DiveSpots.DataContracts.Api\DiveSpots.DataContracts.Api.csproj" />
       <ProjectReference Include="..\DiveSpots.Domain\DiveSpots.Domain.csproj" />
+      <ProjectReference Include="..\DiveSpots.Drivers.AppInsights\DiveSpots.Drivers.AppInsights.csproj" />
       <ProjectReference Include="..\DiveSpots.Drivers.SQL\DiveSpots.Drivers.SQL.csproj" />
+      <ProjectReference Include="..\DiveSpots.InterfaceAdapters.Api\DiveSpots.InterfaceAdapters.Api.csproj" />
     </ItemGroup>
 
 </Project>

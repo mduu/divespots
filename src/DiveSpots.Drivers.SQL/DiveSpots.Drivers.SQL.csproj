@@ -2,12 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -17,8 +19,21 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\DiveSpots.Application.Gateways\DiveSpots.Application.Gateways.csproj" />
       <ProjectReference Include="..\DiveSpots.Domain\DiveSpots.Domain.csproj" />
       <ProjectReference Include="..\DiveSpots.SharedKernel\DiveSpots.SharedKernel.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove=",,\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove=",,\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove=",,\**" />
     </ItemGroup>
 
 </Project>

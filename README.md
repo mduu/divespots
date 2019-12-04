@@ -1,9 +1,9 @@
-# divespots
+# Dive-Spots
 Guide of dive spots including their visibillity.
 
-## Developer Nots
+## Developer Notes
 
-### Introdcue database changes
+### Introdcue database schema changes
 
 1. Generate migration:
 
