@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using DiveSpots.Drivers.SQL.Entities.Country;
 using DiveSpots.Drivers.SQL.Entities.Water;
 using DiveSpots.SharedKernel;
 using JetBrains.Annotations;
@@ -29,6 +30,7 @@ namespace DiveSpots.Drivers.SQL
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
         
+        internal virtual ISet<CountryModel>? Countries { get; set; }
         internal virtual ISet<WaterModel>? Waters { get; set; }
 
         public override int SaveChanges()
@@ -47,6 +49,7 @@ namespace DiveSpots.Drivers.SQL
         {
             base.OnModelCreating(builder);
             
+            builder.ApplyConfiguration(new CountryConfiguration());
             builder.ApplyConfiguration(new WaterConfiguration());
         }
         

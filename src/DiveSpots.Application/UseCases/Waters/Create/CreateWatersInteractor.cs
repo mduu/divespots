@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using DiveSpots.Application.Core;
 using DiveSpots.Application.Gateways.Database;
 using DiveSpots.Application.Gateways.Telemetry;
-using DiveSpots.Domain.Entities;
 using DiveSpots.Domain.Entities.WaterEntity;
 using DiveSpots.SharedKernel;
 using JetBrains.Annotations;
