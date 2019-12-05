@@ -4,16 +4,11 @@ namespace DiveSpots.SharedKernel
 {
     public class UseCaseWithOutputPort<TInteractorOutput> : IRequest<UseCaseResult>
     {
-        private readonly IOutputPort<TInteractorOutput> outputPort;
-
-        public UseCaseWithOutputPort(IOutputPort<TInteractorOutput> outputPort)
+        protected UseCaseWithOutputPort(IOutputPort<TInteractorOutput> outputPort)
         {
-            this.outputPort = outputPort;
+            this.OutputPort = outputPort;
         }
         
-        public void Output(TInteractorOutput interactorOutput)
-        {
-            outputPort.Output(interactorOutput);
-        }
+        public IOutputPort<TInteractorOutput> OutputPort { get; }
     }
 }
