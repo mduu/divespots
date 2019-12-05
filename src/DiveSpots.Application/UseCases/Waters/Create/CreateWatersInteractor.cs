@@ -37,6 +37,8 @@ namespace DiveSpots.Application.UseCases.Waters.Create
 
             await waterRepository.InsertAsync(newWaters);
             
+            request.OutputPort.Output(new CreateWatersInteractorOutput(newWaters.Id));
+            
             return UseCaseResult.Success();
         }
     }
