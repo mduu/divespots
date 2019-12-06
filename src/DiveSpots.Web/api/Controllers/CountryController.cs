@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DiveSpots.Web.api.Controllers
 {
-    [Microsoft.AspNetCore.Components.Route("api/v1/countries")]
+    [Route("api/v1/countries")]
     public class CountryController : ApiControllerBase
     {
         private readonly IMediator mediator;
@@ -31,11 +31,14 @@ namespace DiveSpots.Web.api.Controllers
             {
                 return BadRequest();
             }
-            
+
             var presenter = new CreateCountryApiPresenter();
 
             return CreatedResult(
-                await mediator.Send(new CreateCountry(presenter, country.Name.MapTo())), 
+                await mediator.Send(
+                    new CreateCountry(
+                        presenter,
+                        country.Name.MapTo())),
                 presenter);
         }
     }
