@@ -28,6 +28,8 @@ namespace DiveSpots.Application.UseCases.Country.Create
             var country = new Domain.Entities.CountryEntity.Country(request.Name.MapTo());
             await countryRepository.InsertAsync(country); 
             
+            request.OutputPort.Output(new CreateCountryInteractorOutput(country.Id));
+            
             return UseCaseResult.Success();
         }
     }
