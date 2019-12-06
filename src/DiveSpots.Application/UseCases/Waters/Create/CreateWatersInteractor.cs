@@ -31,6 +31,7 @@ namespace DiveSpots.Application.UseCases.Waters.Create
             using var logScope = logger.BeginScope($"Handle {nameof(CreateWaters)}", request);
 
             var newWaters = new Water(
+                request.CountryId,
                 request.Name.MapTo(),
                 request.Description.MapTo());
 

@@ -8,5 +8,11 @@ namespace DiveSpots.Drivers.SQL.Entities.Water
         public WaterRepository(ApplicationDbContext context) : base(context)
         {
         }
+
+        protected override void MapToModel(Domain.Entities.WaterEntity.Water entity, WaterModel model)
+        {
+            base.MapToModel(entity, model);
+            model.CountryId = entity.CountryId;
+        }
     }
 }

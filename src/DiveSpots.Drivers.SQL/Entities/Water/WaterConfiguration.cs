@@ -8,6 +8,7 @@ namespace DiveSpots.Drivers.SQL.Entities.Water
         public void Configure(EntityTypeBuilder<WaterModel> builder)
         {
             builder.ToTable("Waters");
+            builder.Property(e => e.CountryId).IsRequired();
         }
     }
 }

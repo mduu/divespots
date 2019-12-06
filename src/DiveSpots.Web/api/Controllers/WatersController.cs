@@ -44,7 +44,11 @@ namespace DiveSpots.Web.api.Controllers
             var presenter = new CreateWatersApiPresenter();
 
             return CreatedResult(
-                await mediator.Send(new CreateWaters(presenter, dto.Name.MapTo(), dto.Description.MapTo())),
+                await mediator.Send(new CreateWaters(
+                    presenter, 
+                    dto.CountryId,
+                    dto.Name.MapTo(), 
+                    dto.Description.MapTo())),
                 presenter);
         }
     }
