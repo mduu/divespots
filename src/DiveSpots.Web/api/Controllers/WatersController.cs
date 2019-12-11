@@ -32,7 +32,7 @@ namespace DiveSpots.Web.api.Controllers
 //        {
 //        }
 
-        //[Authorize]
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> CreateWaters([FromBody] CreateWaterDto dto)
         {

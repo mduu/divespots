@@ -5,6 +5,7 @@ using DiveSpots.InterfaceAdapters.Api.Core;
 using DiveSpots.InterfaceAdapters.Api.Presenters.Countries;
 using DiveSpots.Web.Core;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -22,6 +23,7 @@ namespace DiveSpots.Web.api.Controllers
             this.logger = logger;
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> CreateNewCountry([FromBody] CreateCountryDto country)
         {

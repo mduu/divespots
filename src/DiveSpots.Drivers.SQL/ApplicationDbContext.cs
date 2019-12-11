@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using DiveSpots.Drivers.SQL.Entities.Country;
+using DiveSpots.Drivers.SQL.Entities.Spot;
 using DiveSpots.Drivers.SQL.Entities.Water;
 using DiveSpots.SharedKernel;
 using JetBrains.Annotations;
@@ -32,6 +33,7 @@ namespace DiveSpots.Drivers.SQL
         
         internal virtual ISet<CountryModel>? Countries { get; set; }
         internal virtual ISet<WaterModel>? Waters { get; set; }
+        internal virtual ISet<SpotModel>? Spots { get; set; }
 
         public override int SaveChanges()
         {
@@ -51,6 +53,7 @@ namespace DiveSpots.Drivers.SQL
             
             builder.ApplyConfiguration(new CountryConfiguration());
             builder.ApplyConfiguration(new WaterConfiguration());
+            builder.ApplyConfiguration(new SpotConfiguration());
         }
         
         private async Task DispatchDomainEventsForSuccessfullySavedEntities()

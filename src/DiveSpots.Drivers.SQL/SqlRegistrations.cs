@@ -1,6 +1,7 @@
 using System;
 using DiveSpots.Application.Gateways.Database;
 using DiveSpots.Drivers.SQL.Entities.Country;
+using DiveSpots.Drivers.SQL.Entities.Spot;
 using DiveSpots.Drivers.SQL.Entities.Water;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ namespace DiveSpots.Drivers.SQL
             services.AddScoped<ApplicationDbContext>();
             services.AddTransient<ICountryRepository, CountryRepository>();
             services.AddTransient<IWaterRepository, WaterRepository>();
+            services.AddTransient<ISpotRepository, SpotRepository>();
 
             return services;
         }
