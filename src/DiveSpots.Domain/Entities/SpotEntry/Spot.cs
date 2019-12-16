@@ -10,20 +10,19 @@ namespace DiveSpots.Domain.Entities.SpotEntry
             Guid waterId,
             string name,
             string? alternativeName,
-            string description,
+            SpotDescriptions descriptions,
             string city,
             SpotDifficulty difficulty,
-            string? entry,
-            string? parking)
+            SpotCoordinates coordinates)
         {
             Id = Guid.NewGuid();
             WaterId = waterId;
             Name = name;
             AlternativeName = alternativeName;
-            Descriptions = new SpotDescriptions(description);
+            Descriptions = descriptions;
             City = city;
             Difficulty = difficulty;
-            Coordinates = new SpotCoordinates(entry, parking);
+            Coordinates = coordinates;
             
             RaiseDomainEvent(new SpotCreated(Id));
         }

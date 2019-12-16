@@ -4,7 +4,7 @@ namespace DiveSpots.Domain.Entities.SpotEntry
 {
     public class SpotDescriptions : ValueObject
     {
-        internal SpotDescriptions(
+        public SpotDescriptions(
             string? description = null,
             string? underwater = null,
             string? travel = null,

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DiveSpots.DataContracts.Api
+namespace DiveSpots.DataContracts.Api.WaterDtos
 {
     public class CreateWaterDto
     {

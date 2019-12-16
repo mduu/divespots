@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using DiveSpots.Application.UseCases.Waters.Create;
-using DiveSpots.DataContracts.Api;
+using DiveSpots.DataContracts.Api.WaterDtos;
 using DiveSpots.InterfaceAdapters.Api.Core;
 using DiveSpots.InterfaceAdapters.Api.Presenters.Waters;
 using DiveSpots.Web.Core;

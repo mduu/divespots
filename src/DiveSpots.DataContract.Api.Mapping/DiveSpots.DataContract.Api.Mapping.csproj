@@ -2,13 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DiveSpots.Application\DiveSpots.Application.csproj" />
       <ProjectReference Include="..\DiveSpots.DataContracts.Api\DiveSpots.DataContracts.Api.csproj" />
-      <ProjectReference Include="..\DiveSpots.SharedKernel\DiveSpots.SharedKernel.csproj" />
+      <ProjectReference Include="..\DiveSpots.Domain\DiveSpots.Domain.csproj" />
     </ItemGroup>
 
 </Project>

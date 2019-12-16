@@ -1,6 +1,8 @@
+using DiveSpots.SharedKernel;
+
 namespace DiveSpots.Domain.Entities.SpotEntry
 {
-    public class SpotFeatures
+    public class SpotFeatures : ValueObject
     {
         internal SpotFeatures(bool? hasToilets = null, bool? hasFireplace = null)
         {

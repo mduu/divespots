@@ -1,16 +1,17 @@
+using DiveSpots.Domain.ValueObjects;
 using DiveSpots.SharedKernel;
 
 namespace DiveSpots.Domain.Entities.SpotEntry
 {
     public class SpotCoordinates : ValueObject
     {
-        internal SpotCoordinates(string? entry = null, string? parking = null)
+        public SpotCoordinates(Coordinate? entry = null, Coordinate? parking = null)
         {
             Entry = entry ?? Entry;
             Parking = parking ?? Parking;
         }
 
-        public string? Entry { get; private set; } = "";
-        public string? Parking { get; private set; } = "";
+        public Coordinate? Entry { get; private set; }
+        public Coordinate? Parking { get; private set; }
     }
 }

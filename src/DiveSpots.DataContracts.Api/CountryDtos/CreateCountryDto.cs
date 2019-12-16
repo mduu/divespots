@@ -1,4 +1,4 @@
-namespace DiveSpots.DataContracts.Api
+namespace DiveSpots.DataContracts.Api.CountryDtos
 {
     public class CreateCountryDto
     {
