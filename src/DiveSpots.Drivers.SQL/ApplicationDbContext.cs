@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DiveSpots.Drivers.SQL
 {
+    // ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
     public class ApplicationDbContext : IdentityDbContext
     {
         private readonly IMediator mediator;
@@ -31,9 +32,9 @@ namespace DiveSpots.Drivers.SQL
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
         
-        internal virtual ISet<CountryModel>? Countries { get; set; }
-        internal virtual ISet<WaterModel>? Waters { get; set; }
-        internal virtual ISet<SpotModel>? Spots { get; set; }
+        [UsedImplicitly] internal virtual ISet<CountryModel>? Countries { get; set; }
+        [UsedImplicitly] internal virtual ISet<WaterModel>? Waters { get; set; }
+        [UsedImplicitly] internal virtual ISet<SpotModel>? Spots { get; set; }
 
         public override int SaveChanges()
         {
