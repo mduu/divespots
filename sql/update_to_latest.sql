@@ -172,3 +172,98 @@ END;
 
 GO
 
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191204211923_Add_Waters')
+BEGIN
+    CREATE TABLE [Waters] (
+        [Id] uniqueidentifier NOT NULL,
+        [JsonData] nvarchar(max) NOT NULL,
+        CONSTRAINT [PK_Waters] PRIMARY KEY ([Id])
+    );
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191204211923_Add_Waters')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20191204211923_Add_Waters', N'3.0.0');
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191205185152_Add_Countries')
+BEGIN
+    CREATE TABLE [Countries] (
+        [Id] uniqueidentifier NOT NULL,
+        [JsonData] nvarchar(max) NOT NULL,
+        CONSTRAINT [PK_Countries] PRIMARY KEY ([Id])
+    );
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191205185152_Add_Countries')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20191205185152_Add_Countries', N'3.0.0');
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191206061433_Add_WaterCountry_Relation')
+BEGIN
+    ALTER TABLE [Waters] ADD [CountryId] uniqueidentifier NOT NULL DEFAULT '00000000-0000-0000-0000-000000000000';
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191206061433_Add_WaterCountry_Relation')
+BEGIN
+    CREATE INDEX [IX_Waters_CountryId] ON [Waters] ([CountryId]);
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191206061433_Add_WaterCountry_Relation')
+BEGIN
+    ALTER TABLE [Waters] ADD CONSTRAINT [FK_Waters_Countries_CountryId] FOREIGN KEY ([CountryId]) REFERENCES [Countries] ([Id]) ON DELETE CASCADE;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191206061433_Add_WaterCountry_Relation')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20191206061433_Add_WaterCountry_Relation', N'3.0.0');
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191217061427_Add_Spots')
+BEGIN
+    CREATE TABLE [Spots] (
+        [Id] uniqueidentifier NOT NULL,
+        [JsonData] nvarchar(max) NOT NULL,
+        [WaterId] uniqueidentifier NOT NULL,
+        CONSTRAINT [PK_Spots] PRIMARY KEY ([Id]),
+        CONSTRAINT [FK_Spots_Waters_WaterId] FOREIGN KEY ([WaterId]) REFERENCES [Waters] ([Id]) ON DELETE CASCADE
+    );
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191217061427_Add_Spots')
+BEGIN
+    CREATE INDEX [IX_Spots_WaterId] ON [Spots] ([WaterId]);
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20191217061427_Add_Spots')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20191217061427_Add_Spots', N'3.0.0');
+END;
+
+GO
+
