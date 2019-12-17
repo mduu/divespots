@@ -18,7 +18,7 @@ namespace DiveSpots.Application.UseCases.Spots.Create
         private readonly IWaterRepository waterRepository;
 
         public CreateSpotInteractor(
-            ILogger logger,
+            ILogger<CreateSpotInteractor> logger,
             ISpotRepository spotRepository,
             IWaterRepository waterRepository)
         {
