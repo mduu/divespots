@@ -8,6 +8,6 @@ namespace DiveSpots.InterfaceAdapters.Api.Core
     public static class TranslationDtoMapper
     {
         public static IEnumerable<TranslationData> MapTo(this IEnumerable<TranslationDto> translations)
-            => translations?.Select(t => new TranslationData(t.IsoCode, t.Text));
+            => translations.Select(t => new TranslationData(t.IsoCode, t.Text));
     }
 }

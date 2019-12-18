@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using DiveSpots.Application.UseCases.Country.Create;
+using DiveSpots.Application.UseCases.Country.GetList;
 using DiveSpots.DataContracts.Api;
 using DiveSpots.DataContracts.Api.CountryDtos;
 using DiveSpots.InterfaceAdapters.Api.Core;
@@ -24,6 +25,18 @@ namespace DiveSpots.Web.api.Controllers
             this.logger = logger;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            using var logScope = logger.BeginScope("Begin {name}", nameof(Get));
+
+            var presenter = new GetCountryApiPresenter();
+
+            return CreateResult(
+                await mediator.Send(new GetCountryList(presenter)),
+                presenter);
+        }
+
         [Authorize]
         [HttpPut]
         public async Task<IActionResult> CreateNewCountry([FromBody] CreateCountryDto country)
@@ -37,7 +50,7 @@ namespace DiveSpots.Web.api.Controllers
 
             var presenter = new CreateCountryApiPresenter();
 
-            return CreatedResult(
+            return CreateResult(
                 await mediator.Send(
                     new CreateCountry(
                         presenter,

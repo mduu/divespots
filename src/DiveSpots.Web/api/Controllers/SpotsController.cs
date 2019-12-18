@@ -31,7 +31,7 @@ namespace DiveSpots.Web.api.Controllers
             
             var presenter = new CreateSpotsApiPresenter();
 
-            return CreatedResult(
+            return CreateResult(
                 await mediator.Send(
                     new CreateSpot(
                         presenter,

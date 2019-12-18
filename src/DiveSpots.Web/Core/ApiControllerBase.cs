@@ -8,7 +8,7 @@ namespace DiveSpots.Web.Core
 {
     public abstract class ApiControllerBase : Controller
     {
-        protected IActionResult CreatedResult<T>(UseCaseResult useCaseResult, IObjectPresenter<T> presenter) =>
+        protected IActionResult CreateResult<T>(UseCaseResult useCaseResult, IObjectPresenter<T> presenter) =>
             useCaseResult.ResultCategory switch
             {
                 ResultCategory.Success => (IActionResult) Ok(presenter.GetOutputModel()),
