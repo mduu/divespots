@@ -11,8 +11,8 @@ namespace DiveSpots.InterfaceAdapters.Api.Presenters.Countries
             SetOutputObject(
                 new GetCountryListApiOutput(
                     interactorOutput.Countries.Select(c =>
-                        new GetCountryListApiOutput.CountryItem(
+                        new CountryOutputItem(
                             c.Id,
-                            c.Name))));
+                            c.Name)).ToList()));
     }
 }

@@ -4,25 +4,23 @@ using DiveSpots.Application.Core;
 
 namespace DiveSpots.InterfaceAdapters.Api.Presenters.Countries
 {
-    public class GetCountryListApiOutput
+    public class GetCountryListApiOutput : List<CountryOutputItem>, IEnumerable<CountryOutputItem>
     {
-        public GetCountryListApiOutput(IEnumerable<CountryItem> countries)
+        public GetCountryListApiOutput(IEnumerable<CountryOutputItem> countryList)
+            : base(countryList)
         {
-            Countries = countries;
+        }
+    }
+    
+    public class CountryOutputItem
+    {
+        public CountryOutputItem(Guid id, IEnumerable<TranslationData> name)
+        {
+            Id = id;
+            Name = name;
         }
 
-        public IEnumerable<CountryItem> Countries { get; }
-
-        public class CountryItem
-        {
-            public CountryItem(Guid id, IEnumerable<TranslationData> name)
-            {
-                Id = id;
-                Name = name;
-            }
-
-            public Guid Id { get; }
-            public IEnumerable<TranslationData> Name { get; }
-        }
+        public Guid Id { get; }
+        public IEnumerable<TranslationData> Name { get; }
     }
 }
