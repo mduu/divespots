@@ -5,7 +5,7 @@ using DiveSpots.SharedKernel;
 
 namespace DiveSpots.InterfaceAdapters.Api.Presenters.Countries
 {
-    public class GetCountryApiPresenter : ObjectPresenter<GetCountryListApiOutput>, IOutputPort<GetCountryListInteractorOutput>
+    public class GetCountryListApiPresenter : ObjectPresenter<GetCountryListApiOutput>, IOutputPort<GetCountryListInteractorOutput>
     {
         public void Output(GetCountryListInteractorOutput interactorOutput) =>
             SetOutputObject(

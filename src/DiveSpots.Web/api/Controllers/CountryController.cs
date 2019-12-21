@@ -30,7 +30,7 @@ namespace DiveSpots.Web.api.Controllers
         {
             using var logScope = logger.BeginScope("Begin {name}", nameof(Get));
 
-            var presenter = new GetCountryApiPresenter();
+            var presenter = new GetCountryListApiPresenter();
 
             return CreateResult(
                 await mediator.Send(new GetCountryList(presenter)),
