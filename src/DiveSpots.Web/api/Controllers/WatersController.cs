@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using DiveSpots.Application.UseCases.Waters.Create;
+using DiveSpots.Application.UseCases.Waters.GetList;
 using DiveSpots.DataContracts.Api.WaterDtos;
 using DiveSpots.InterfaceAdapters.Api.Core;
 using DiveSpots.InterfaceAdapters.Api.Presenters.Waters;
@@ -22,11 +23,16 @@ namespace DiveSpots.Web.api.Controllers
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-//        [HttpGet("")]
-//        public IActionResult GetAllWaters()
-//        {
-//        }
-//
+        [HttpGet()]
+        public async Task<IActionResult> GetAllWaters([FromQuery] Guid countryId)
+        {
+            var presenter = new GetWaterListApiPresenter();
+
+            return CreateResult(
+                await mediator.Send(new GetWaterList(presenter, countryId)),
+                presenter);
+        }
+
 //        [HttpGet("{waterId}")]
 //        public IActionResult GetWaterById(Guid waterId)
 //        {

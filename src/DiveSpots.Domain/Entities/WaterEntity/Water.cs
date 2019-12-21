@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using DiveSpots.Domain.Entities.CountryEntity;
 using DiveSpots.Domain.Entities.WaterEntity.Events;
 using DiveSpots.Domain.ValueObjects;
 using DiveSpots.SharedKernel;
