@@ -21,7 +21,7 @@ namespace DiveSpots.Services.Mocks
                         {
                             WaterId = MockData.WaterIdZuerichsee,
                             WaterName = "Zürichsee",
-                            Visibility = OverallVisibility.Good,
+                            Visibility =  Visibility.Good,
                             MarineLife = MarineLife.Much,
                             Temperature = new OverallTemperature
                             {

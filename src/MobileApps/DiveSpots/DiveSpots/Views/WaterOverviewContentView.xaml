@@ -2,13 +2,61 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:DiveSpots.Converters"
     x:Class="DiveSpots.Views.WaterOverviewContentView">
 
-    <ContentView.Content>
-        <StackLayout
-            Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+    <ContentView.Resources>
+        <ResourceDictionary>
 
-            <Label FontSize="Subtitle" Text="{Binding WaterName}" />
-        </StackLayout>
+            <converters:VisibilityToTextConverter x:Key="visibilityToText" />
+
+            <converters:WaterVisibiltyOverviewToBackgroundConverter x:Key="waterImageBg" />
+
+            <Style TargetType="Label" Class="BrightLabel">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+
+        <AbsoluteLayout
+            VerticalOptions="CenterAndExpand">
+
+            <Image
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Source="{Binding ., Converter={StaticResource waterImageBg}}"
+                Aspect="AspectFill">
+            </Image>
+
+            <StackLayout
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Padding="5,5,0,5"
+                Orientation="Vertical"
+                VerticalOptions="CenterAndExpand">
+
+                <Label FontSize="Title" Text="{Binding WaterName}" StyleClass="BrightLabel"/>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <Label Text="{Binding Temperature.MinCelcius}" StyleClass="BrightLabel"/>
+                    <Label Text="-" StyleClass="BrightLabel"/>
+                    <Label Text="{Binding Temperature.MaxCelcius}" StyleClass="BrightLabel"/>
+                    <Label Text="°C" StyleClass="BrightLabel"/>
+                    <Label Text="/" StyleClass="BrightLabel"/>
+                    <Label Text="{Binding Visibility, Converter={StaticResource visibilityToText}}" StyleClass="BrightLabel"/>
+                    <Label Text="/" StyleClass="BrightLabel" />
+                    <Label Text="{Binding MarineLife}" StyleClass="BrightLabel"/>
+
+                </StackLayout>
+            </StackLayout>
+
+
+        </AbsoluteLayout>
+
     </ContentView.Content>
 </ContentView>

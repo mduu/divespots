@@ -5,6 +5,12 @@
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
@@ -14,5 +20,25 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\ItemsPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\VisibilityBackgrounds\" />
+    <Folder Include="XamlExtensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\VisibilityBackgrounds\vis_bg_clear.jpg" />
+    <None Remove="Resources\VisibilityBackgrounds\vis_bg_bad.jpg" />
+    <None Remove="Resources\VisibilityBackgrounds\vis_bg_good.jpg" />
+    <None Remove="Resources\VisibilityBackgrounds\vis_bg_ok.jpg" />
+    <None Remove="Resources\VisibilityBackgrounds\vis_bg_verybad.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\VisibilityBackgrounds\vis_bg_clear.jpg" />
+    <EmbeddedResource Include="Resources\VisibilityBackgrounds\vis_bg_bad.jpg" />
+    <EmbeddedResource Include="Resources\VisibilityBackgrounds\vis_bg_good.jpg" />
+    <EmbeddedResource Include="Resources\VisibilityBackgrounds\vis_bg_ok.jpg" />
+    <EmbeddedResource Include="Resources\VisibilityBackgrounds\vis_bg_verybad.jpg" />
   </ItemGroup>
 </Project>

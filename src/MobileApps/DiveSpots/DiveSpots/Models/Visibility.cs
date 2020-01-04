@@ -1,11 +1,11 @@
 ﻿namespace DiveSpots.Models
 {
-    public enum OverallVisibility
+    public enum Visibility
     {
         VeryBad,
         Bad,
+        Ok,
         Good,
-        VeryGood,
         Excelent,
     }
 }

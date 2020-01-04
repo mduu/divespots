@@ -18,15 +18,12 @@
                 VerticalOptions="Center"/>
         </StackLayout>
 
-        <!--<StackLayout Orientation="Horizontal">
-            <Label Text="Anzahl Gewässer:" />
-            <Label Text="{Binding Waters.Count}" />
-        </StackLayout>-->
-
         <ListView
-            x:Name="WatersList"
             CachingStrategy="RecycleElement"
             IsPullToRefreshEnabled="True"
+            SeparatorVisibility="None"
+            SelectionMode="None"
+            RowHeight="70"
             ItemsSource="{Binding Waters}"
             RefreshCommand="{Binding LoadWatersCommand}"
             IsRefreshing="{Binding IsRefreshingWaters}">
@@ -35,25 +32,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <views:WaterOverviewContentView BindingContext="{Binding .}" Margin="20, 2" />
+                        <views:WaterOverviewContentView BindingContext="{Binding .}" Margin="0,0,0,2" />
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            <!--Custom View Cells-->
-            <!--
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-    -->
+
         </ListView>
 
     </StackLayout>
