@@ -26,6 +26,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Resources\VisibilityBackgrounds\" />
     <Folder Include="XamlExtensions\" />
+    <Folder Include="DependencyManagment\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\VisibilityBackgrounds\vis_bg_clear.jpg" />

@@ -1,8 +1,7 @@
-using DiveSpots.Services;
 using DiveSpots.Services.Mocks;
 using Xamarin.Forms;
 
-namespace DiveSpots
+namespace DiveSpots.DependencyManagment
 {
     internal static class DependencyRegistrations
     {

@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using DiveSpots.Views;
+using DiveSpots.DependencyManagment;
 
 namespace DiveSpots
 {
