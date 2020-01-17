@@ -1,6 +1,7 @@
 ﻿using System;
 
 using DiveSpots.Models;
+using DiveSpots.ViewModels.Base;
 
 namespace DiveSpots.ViewModels
 {

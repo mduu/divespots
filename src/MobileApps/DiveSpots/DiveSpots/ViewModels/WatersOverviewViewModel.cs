@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using DiveSpots.Models;
 using DiveSpots.Services;
+using DiveSpots.ViewModels.Base;
 using Xamarin.Forms;
 
 namespace DiveSpots.ViewModels

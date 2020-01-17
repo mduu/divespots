@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using DiveSpots.ViewModels.Base;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 

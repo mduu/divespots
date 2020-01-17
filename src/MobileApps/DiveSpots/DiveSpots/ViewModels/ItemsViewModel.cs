@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using DiveSpots.Models;
+using DiveSpots.ViewModels.Base;
 using DiveSpots.Views;
 
 namespace DiveSpots.ViewModels

@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
-using Xamarin.Forms;
-
 using DiveSpots.Models;
 using DiveSpots.Services;
+using Xamarin.Forms;
 
-namespace DiveSpots.ViewModels
+namespace DiveSpots.ViewModels.Base
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
