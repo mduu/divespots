@@ -7,14 +7,14 @@ using Xamarin.Forms;
 
 namespace DiveSpots.ViewModels
 {
-    public class WatersOverviewViewModel : BaseViewModel
+    public class WatersOverviewPageViewModel : BaseViewModel
     {
         private IWaterVisibilityOverviewDataStore waterVisibilityStore => DependencyService.Get<IWaterVisibilityOverviewDataStore>();
         private ICountryDataStore countryStore => DependencyService.Get<ICountryDataStore>();
         private CountryItem selectedCountry;
         private bool isRefreshingWaters = false;
 
-        public WatersOverviewViewModel()
+        public WatersOverviewPageViewModel()
         {
             Title = "Gewässer";
         }

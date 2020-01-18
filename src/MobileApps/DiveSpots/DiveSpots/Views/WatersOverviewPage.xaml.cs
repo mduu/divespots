@@ -12,12 +12,11 @@ namespace DiveSpots.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WatersOverviewPage : ContentPage
     {
-        private readonly WatersOverviewViewModel viewModel;
-
+        private WatersOverviewPageViewModel ViewModel => BindingContext as WatersOverviewPageViewModel;
+        
         public WatersOverviewPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new WatersOverviewViewModel();
         }
 
         protected override void OnAppearing()
@@ -28,7 +27,7 @@ namespace DiveSpots.Views
 
         private void FetchAll()
         {
-            viewModel.LoadCountryListCommand.Execute(null);
+            ViewModel?.LoadCountryListCommand.Execute(null);
         }
     }
 }
