@@ -31,40 +31,11 @@ namespace DiveSpots.ViewModels.Base
         public static void SetAutoWireViewModel(BindableObject bindable, bool value)
             => bindable.SetValue(AutoWireViewModelProperty, value);
 
-        public static void UpdateDependencies(bool useMockServices)
-        {
-            // // Change injected dependencies
-            // if (useMockServices)
-            // {
-            //     container.Register<ICatalogService, CatalogMockService>();
-            //     container.Register<IBasketService, BasketMockService>();
-            //     container.Register<IOrderService, OrderMockService>();
-            //     container.Register<IUserService, UserMockService>();
-            //     container.Register<ICampaignService, CampaignMockService>();
-            //
-            //     UseMockService = true;
-            // }
-            // else
-            // {
-            //     _container.Register<ICatalogService, CatalogService>();
-            //     _container.Register<IBasketService, BasketService>();
-            //     _container.Register<IOrderService, OrderService>();
-            //     _container.Register<IUserService, UserService>();
-            //     _container.Register<ICampaignService, CampaignService>();
-            //
-            //     UseMockService = false;
-            // }
-        }
-
         public static void RegisterSingleton<TInterface, T>() where TInterface : class where T : class, TInterface
-        {
-            Container.RegisterSingleton<TInterface, T>();
-        }
+            => Container.RegisterSingleton<TInterface, T>();
 
         public static T Resolve<T>() where T : class
-        {
-            return Container.GetInstance<T>();
-        }
+            => Container.GetInstance<T>();
 
         private static void OnAutoWireViewModelChanged(BindableObject bindable, object oldValue, object newValue)
         {
